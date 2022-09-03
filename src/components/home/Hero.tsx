@@ -4,7 +4,7 @@ import food from "../../../public/images/food.jpg"
 
 const Hero = () => {
 
-    const title:string = "Kartoffelstampf mit lecker Gedöns"
+    const title = "Kartoffelstampf mit lecker Gedöns"
 
   return (
     <div className='w-3/4 m-auto my-40 h-96 relative border-t-8 border-pink-400'>
