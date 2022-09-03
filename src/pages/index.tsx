@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import LoginButton from "../components/login";
+import Carousel from "../components/home/Carousel";
+import Hero from "../components/home/Hero";
 import { trpc } from "../utils/trpc";
 
 type TechnologyCardProps = {
@@ -20,8 +21,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 <main>
-  <h1>Test</h1>
-  <LoginButton />
+  <Hero/>
+  <Carousel />
 </main>
     </>
   );

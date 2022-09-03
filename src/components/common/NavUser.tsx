@@ -13,15 +13,14 @@ const LoginButton = () => {
    <>
    {session ? (
         <div>
-          <p>
-            hi {session.user?.name}
-          </p>
 
-          <button onClick={() => signOut()}>Logout</button>
+            <span className='text-white mr-4'>{session.user?.name}</span> <button className="bg-white px-3 py-1" onClick={() => signOut()}> Logout</button>
+
+
         </div>
       ) : (
         <div>
-          <button onClick={() => signIn()}>Login with Discord</button>
+          <button onClick={() => signIn()}>Login</button>
         </div>
       )}
    </>
