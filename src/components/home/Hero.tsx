@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
-import food from "../../../public/images/foodplate.png"
+import food from "../../../public/images/food.jpg"
 
 const Hero = () => {
 
 
-  const [like,setlike] = useState(100)
+  const [like,setlike] = useState(87)
   const [likeactive,setlikeactive] = useState(false)
 
 
@@ -23,10 +23,10 @@ const Hero = () => {
   }
 
   return (
-    <div className='w-full h-screen relative flex items-center justify-center bg-cb_darkblue'>
-      <div className='w-1/3 flex flex-col gap-y-8 items-start'>
+    <div className='w-3/4 m-auto h-screen relative flex items-center justify-center bg-cb_darkblue'>
+      <div className='w-1/2 flex flex-col gap-y-8 items-start z-10 -mr-40'>
             <h1 className='header2 text-cb_green'>Rezept des Tages</h1>
-            <h2 className='header1 text-cb_white text-5xl'>{title}</h2>
+            <h2 className='header1 text-cb_white text-5xl drop-shadow-md'>{title}</h2>
         <div className='flex gap-x-4'>
         <button className='btn'>zeig mir mehr ...</button>
         {
@@ -37,7 +37,7 @@ const Hero = () => {
         
         </div>
       </div>
-        <Image src={food} width={600} height={600}/>
+        <Image src={food}  width={800}/>
      
         </div>
   )
