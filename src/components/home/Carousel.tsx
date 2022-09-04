@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import CarouselElement from './CarouselElement'
 import recipes from "../../data/recipes.json"
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { isNumberObject } from 'util/types';
 
 const Carousel = () => {
 
-  const scrl = useRef(null);
+  const scrl = useRef<any>(null);
   const [scrollX, setscrollX] = useState(0); // For detecting start scroll postion
   const [scrolEnd, setscrolEnd] = useState(false); // For detecting end of scrolling
 
