@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import CarouselElement from './CarouselElement'
 import recipes from "../../data/recipes.json"
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
-import { isNumberObject } from 'util/types';
 
 const Carousel = () => {
 
@@ -36,7 +35,6 @@ const Carousel = () => {
     } else {
       setscrolEnd(false);
     }
-    return () => {};
   }, [scrl?.current?.scrollWidth, scrl?.current?.offsetWidth]);
 
 
