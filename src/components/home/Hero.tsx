@@ -1,19 +1,44 @@
 import Image from 'next/image'
-import React from 'react'
-import food from "../../../public/images/food.jpg"
+import React, { useState } from 'react'
+import { FaHeart, FaRegHeart } from 'react-icons/fa'
+import food from "../../../public/images/foodplate.png"
 
 const Hero = () => {
 
+
+  const [like,setlike] = useState(100)
+  const [likeactive,setlikeactive] = useState(false)
+
+
     const title = "Kartoffelstampf mit lecker Gedöns"
 
+    function likePost() {
+      if(likeactive){
+        setlikeactive(false)
+        setlike(like-1)
+    } else {
+      setlikeactive(true)
+      setlike(like+1)
+    }
+  }
+
   return (
-    <div className='w-3/4 m-auto my-40 h-96 relative border-t-8 border-pink-400'>
-        <Image src={food} layout="fill" objectFit="cover"/>
-        <div className='absolute inset-0 bg-gradient-to-tr from-black via-transparent'></div>
-        <div className='absolute -bottom-0 left-10 w-80 translate-y-1/4'>
-            <h1 className='text-white font-bold'>Rezept des Tages</h1>
-            <h2 className='text-4xl font-black  text-sky-300 decoration-pink-400 uppercase underline decoration-solid decoration-8'>{title}</h2>
+    <div className='w-full h-screen relative flex items-center justify-center bg-cb_darkblue'>
+      <div className='w-1/3 flex flex-col gap-y-8 items-start'>
+            <h1 className='header2 text-cb_green'>Rezept des Tages</h1>
+            <h2 className='header1 text-cb_white text-5xl'>{title}</h2>
+        <div className='flex gap-x-4'>
+        <button className='btn'>zeig mir mehr ...</button>
+        {
+          likeactive ? (
+            <button className="flex gap-x-2 items-center justify-center text-xl text-cb_white" onClick={likePost}><FaHeart className='text-red-500'/> {like}</button>
+          ) : (<button className="flex gap-x-2 items-center justify-center text-xl text-cb_white" onClick={likePost}><FaRegHeart/> {like}</button>)
+        }
+        
         </div>
+      </div>
+        <Image src={food} width={600} height={600}/>
+     
         </div>
   )
 }

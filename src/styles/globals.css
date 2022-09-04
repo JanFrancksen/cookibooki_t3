@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+    @apply bg-cb_darkblue;
+}
+
+@layer components {
+    .navitem {
+        @apply text-cb_green hover:text-cb_white
+    }
+
+    .header1{
+        @apply text-4xl font-black  text-cb_green /*decoration-pink-400 uppercase underline decoration-solid decoration-8*/;
+    }
+
+    .header2{
+       @apply text-white font-bold
+    }
+
+    .btn {
+        @apply text-cb_green border-cb_green border-2 px-4 py-2 rounded-full shadow-md hover:bg-cb_green hover:text-cb_darkblue transition-colors
+    }
+}
