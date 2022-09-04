@@ -10,15 +10,15 @@ const Carousel = () => {
   const [scrolEnd, setscrolEnd] = useState(false); // For detecting end of scrolling
 
   const slide = (shift:number) => {
-    scrl.current.scrollLeft += shift;
+    scrl.current!.scrollLeft += shift;
     setscrollX(scrollX + shift); // Updates the latest scrolled postion
   };
 
   const scrollCheck = () => {
-    setscrollX(scrl.current.scrollLeft);
+    setscrollX(scrl.current!.scrollLeft);
     if (
-      Math.floor(scrl.current.scrollWidth - scrl.current.scrollLeft) <=
-      scrl.current.offsetWidth
+      Math.floor(scrl.current!.scrollWidth - scrl.current!.scrollLeft) <=
+      scrl.current!.offsetWidth
     ) {
       setscrolEnd(true);
     } else {
