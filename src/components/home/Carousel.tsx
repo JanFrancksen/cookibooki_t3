@@ -55,7 +55,7 @@ const Carousel = () => {
               <div></div>
             </>
           )}
-    <div className='flex flex-nowrap gap-x-8 pl-20 overflow-x-auto relative' ref={scrl} onScroll={scrollCheck}>
+    <div className='flex flex-nowrap gap-x-8 pl-20 overflow-x-auto relative scroll-smooth' ref={scrl} onScroll={scrollCheck}>
       
         {recipeList}
 
