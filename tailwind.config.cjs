@@ -8,6 +8,9 @@ module.exports = {
         cb_blue: '#223347',
         cb_darkblue: '#172331',
         cb_white: '#E1E1E1'
+      },
+      backgroundImage: {
+        'rezepteHero': "url('/images/food.jpg')"
       }
     },
   },
