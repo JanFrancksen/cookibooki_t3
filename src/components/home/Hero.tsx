@@ -46,28 +46,28 @@ const Hero = () => {
         </div>
       </div>
       <Image src={food} width={400} height={400} />
-      <div className="flex flex-col gap-y-4 z-10  absolute right-0 top-1/2 -translate-y-1/2">
-        <div className="bg-cb_primary w-80 p-4 rounded-l-full text-white hover:scale-105 transition-transform cursor-pointer flex flex-row gap-x-4 items-center">
+      <div className="flex flex-col gap-y-4 z-10  absolute right-0 top-1/2 -translate-y-1/2 items-end">
+        <button className="bg-cb_primary w-80 p-4 rounded-l-full text-white hover:w-96 transition-all cursor-pointer flex flex-row gap-x-4 items-center">
           <Image src={food} width={100} height={100} />
           <div className="">
             <h3 className="font-bold">Rezept des Tages</h3>
             <p>Beschreibung</p>
           </div>
-        </div>
-        <div className="bg-cb_primary w-80 p-4 rounded-l-full text-white hover:scale-105 transition-transform cursor-pointer flex flex-row gap-x-4 items-center">
+        </button>
+        <button className="bg-cb_primary w-80 p-4 rounded-l-full text-white hover:w-96 transition-all  cursor-pointer flex flex-row gap-x-4 items-center">
           <Image src={food} width={100} height={100} />
           <div className="">
             <h3 className="font-bold">Rezept des Tages</h3>
             <p>Beschreibung</p>
           </div>
-        </div>
-        <div className="bg-cb_primary w-80 p-4 rounded-l-full text-white hover:scale-105 transition-transform cursor-pointer flex flex-row gap-x-4 items-center">
+        </button>
+        <button className="bg-cb_primary w-80 p-4 rounded-l-full text-white hover:w-96 transition-all  cursor-pointer flex flex-row gap-x-4 items-center">
           <Image src={food} width={100} height={100} />
           <div className="">
             <h3 className="font-bold">Rezept des Tages</h3>
             <p>Beschreibung</p>
           </div>
-        </div>
+        </button>
       </div>
     </div>
   );
