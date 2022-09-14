@@ -12,14 +12,17 @@ const NightmodeSwitcher = dynamic(() => import("./NightmodeSwitcher"), {
 const Navbar = () => {
   const NavitemList = [
     {
+      id: 1,
       name: "Rezepte",
       link: "/rezepte",
     },
     {
+      id: 2,
       name: "Affiliates",
       link: "/rezepte",
     },
     {
+      id: 3,
       name: "Blog",
       link: "/rezepte",
     },
@@ -27,7 +30,7 @@ const Navbar = () => {
 
   const NavItems = NavitemList.map((item) => {
     return (
-      <Link href={item.link}>
+      <Link key={item.id} href={item.link}>
         <a>{item.name}</a>
       </Link>
     );
