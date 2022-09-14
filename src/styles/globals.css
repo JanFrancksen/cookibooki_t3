@@ -12,11 +12,11 @@ html {
   }
 
   .header1 {
-    @apply text-4xl font-black  text-cb_green /*decoration-pink-400 uppercase underline decoration-solid decoration-8*/;
+    @apply text-4xl font-black  text-cb_green;
   }
 
   .header2 {
-    @apply text-white font-bold;
+    @apply text-cb_white font-bold;
   }
 
   .btn {

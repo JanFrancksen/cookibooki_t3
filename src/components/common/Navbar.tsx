@@ -39,7 +39,9 @@ const Navbar = () => {
   return (
     <header className="navbar w-full fixed top-0 left-0 p-4 z-50 bg-cb_white dark:bg-cb_blue">
       <div className="w-3/4 m-auto flex justify-between items-center">
-        <nav className="flex gap-x-4">{NavItems}</nav>
+        <nav className="flex gap-x-4 font-serif font-bold uppercase">
+          {NavItems}
+        </nav>
         <div className="absolute left-1/2 -translate-x-1/2 top-4">
           <Link href="/">
             <Image src={Logo} width={80} height={80} />

@@ -50,7 +50,7 @@ const Hero = () => {
         <button className="bg-cb_primary w-80 p-4 rounded-l-full text-white hover:w-96 transition-all cursor-pointer flex flex-row gap-x-4 items-center">
           <Image src={food} width={100} height={100} />
           <div className="">
-            <h3 className="font-bold">Rezept des Tages</h3>
+            <h3 className="font-bold font-serif">Rezept des Tages</h3>
             <p>Beschreibung</p>
           </div>
         </button>
