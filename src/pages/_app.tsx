@@ -7,22 +7,21 @@ import type { AppType } from "next/dist/shared/lib/utils";
 import superjson from "superjson";
 import type { AppRouter } from "../server/router";
 import "../styles/globals.css";
-import Layout from "../components/common/Layout"
-
-
-
+import Layout from "../components/common/Layout";
+import { ThemeProvider } from "next-themes";
 
 const MyApp: AppType = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
   return (
-    <SessionProvider session={session}>
-      <Layout>
-
-      <Component {...pageProps} />
-      </Layout>
-    </SessionProvider>
+    <ThemeProvider defaultTheme="light">
+      <SessionProvider session={session}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </SessionProvider>
+    </ThemeProvider>
   );
 };
 
@@ -62,4 +61,3 @@ export default withTRPC<AppRouter>({
    */
   ssr: false,
 })(MyApp);
-
