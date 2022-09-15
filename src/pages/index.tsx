@@ -3,11 +3,8 @@ import Head from "next/head";
 import Carousel from "../components/home/Carousel";
 import Hero from "../components/home/Hero";
 import Inspiration from "../components/home/Inspiration";
-import { trpc } from "../utils/trpc";
 
 const Home: NextPage = () => {
-  const hello = trpc.useQuery(["example.hello", { text: "from tRPC" }]);
-
   return (
     <>
       <Head>

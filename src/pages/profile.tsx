@@ -1,11 +1,8 @@
-import React from 'react'
+import type { NextPage } from "next";
+import React from "react";
 
-const Profile = () => {
-  return (
-    <div>
-        USER PAGE
-    </div>
-  )
-}
+const Profile: NextPage = () => {
+  return <div>test</div>;
+};
 
-export default Profile
+export default Profile;

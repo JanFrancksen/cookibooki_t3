@@ -24,7 +24,7 @@ const Navbar = () => {
     {
       id: 3,
       name: "Blog",
-      link: "/rezepte",
+      link: "/blog",
     },
   ];
 
@@ -44,7 +44,9 @@ const Navbar = () => {
         </nav>
         <div className="absolute left-1/2 -translate-x-1/2 top-4">
           <Link href="/">
-            <Image src={Logo} width={80} height={80} />
+            <a>
+              <Image src={Logo} alt="Logo" width={80} height={80} />
+            </a>
           </Link>
         </div>
         <div className="flex gap-x-4">
