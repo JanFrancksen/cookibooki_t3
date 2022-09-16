@@ -1,35 +1,17 @@
 import React, { useRef, useState } from "react";
 import recipes from "../data/recipes.json";
 import RecipeItem from "../components/recipes/RecipeItem";
-import { createRouter } from "../server/router/context";
+import Loader from "../components/common/Loader";
+import { trpc } from "../utils/trpc";
 
 const Rezepte = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const recipeList = recipes.map((recipe) => (
-    <RecipeItem
-      key={recipe.id}
-      image={recipe.img}
-      title={recipe.title}
-      description={recipe.content}
-    />
-  ));
 
-  const filteredRecipeList = recipes
-    .filter((val) => {
-      if (searchTerm == "") {
-        return val;
-      } else if (val.ingredients.includes(searchTerm)) {
-        return val;
-      }
-    })
-    .map((recipe) => (
-      <RecipeItem
-        key={recipe.id}
-        image={recipe.img}
-        title={recipe.title}
-        description={recipe.content}
-      />
-    ));
+  const { data, isLoading } = trpc.useQuery(["recipe.getAllRecipes"]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   return (
     <div>
@@ -75,7 +57,17 @@ const Rezepte = () => {
         className="grid grid-cols-3 w-3/4 m-auto gap-8 -mt-16 mb-16 z-20"
         id="recipeContainer"
       >
-        {filteredRecipeList.length > 0 ? filteredRecipeList : recipeList}
+        {data?.map((recipe) => {
+          return (
+            <RecipeItem
+              key={recipe.id}
+              image={recipe.img}
+              title={recipe.title}
+              description={recipe.content}
+              link={recipe.id}
+            />
+          );
+        })}
       </div>
     </div>
   );

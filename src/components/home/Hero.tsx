@@ -1,13 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
 import React, { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
+
 import food from "../../../public/images/foodplate.png";
+import Loader from "../../components/common/Loader";
+import { trpc } from "../../utils/trpc";
 
 const Hero = () => {
+  const recipeId = "cl84sqscr0209ggiqlcy6b16q";
+  const { data, isLoading } = trpc.useQuery([
+    "recipe.getSingleRecipe",
+    { recipeId },
+  ]);
+
   const [like, setlike] = useState(87);
   const [likeactive, setlikeactive] = useState(false);
-
-  const title = "Kartoffelstampf mit lecker Gedöns";
 
   function likePost() {
     if (likeactive) {
@@ -19,28 +27,34 @@ const Hero = () => {
     }
   }
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
-    <div className="w-full m-auto h-[80vh] relative flex items-center justify-center">
+    <div className="w-full m-auto h-[70vh] relative flex items-center justify-center">
       <div className="w-96 flex flex-col gap-y-8 items-start z-10 p-8 absolute left-8 top-1/2 -translate-y-1/2">
         <h1 className="header2 text-cb_green">Rezept des Tages</h1>
-        <h2 className="header1 dark:text-cb_white text-5xl drop-shadow-md">
-          {title}
+        <h2 className="header1 dark:text-cb_white text-5xl drop-shadow-md font-bold font-serif">
+          {data?.title}
         </h2>
         <div className="flex gap-x-4">
-          <button className="btn">zeig mir mehr ...</button>
+          <Link href={`/rezepte/${recipeId}`} className="btn">
+            zeig mir mehr ...
+          </Link>
           {likeactive ? (
             <button
               className="flex gap-x-2 items-center justify-center text-xl text-cb_white"
               onClick={likePost}
             >
-              <FaHeart className="text-red-500" /> {like}
+              <FaHeart className="text-red-500" /> {data?.likes}
             </button>
           ) : (
             <button
               className="flex gap-x-2 items-center justify-center text-xl text-cb_white"
               onClick={likePost}
             >
-              <FaRegHeart /> {like}
+              <FaRegHeart /> {data?.likes}
             </button>
           )}
         </div>

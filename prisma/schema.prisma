@@ -60,3 +60,14 @@ model Post {
     updatedAt DateTime @updatedAt
     likes     Int
 }
+
+model Recipe {
+    id          String   @id @default(cuid())
+    img         String
+    title       String
+    description String
+    content     String?
+    createdAt   DateTime @default(now())
+    updatedAt   DateTime @updatedAt
+    likes       Int      @default(0)
+}

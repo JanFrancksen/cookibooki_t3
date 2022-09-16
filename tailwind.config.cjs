@@ -12,12 +12,11 @@ module.exports = {
       },
 
       colors: {
-        cb_green: "#91B849",
-        cb_blue: "#223347",
-        cb_darkblue: "#172331",
         cb_white: "#E1E1E1",
-        cb_black: "#000000",
-        cb_primary: "orange",
+        cb_black: "#121212",
+        cb_primary: "#F1A104",
+        cb_secondary: "#25B396",
+        cb_accent: "#00743F",
       },
       backgroundImage: {
         rezepteHero: "url('/images/food.jpg')",
