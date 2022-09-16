@@ -12,7 +12,7 @@ const NightmodeSwitcher = dynamic(() => import("./NightmodeSwitcher"), {
 });
 
 const Navbar = () => {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
 
   const NavitemList = [
     {
@@ -35,14 +35,16 @@ const Navbar = () => {
   const NavItems = NavitemList.map((item) => {
     return (
       <Link key={item.id} href={item.link}>
-        <a>{item.name}</a>
+        <a className="hover:text-cb_primary dark:hover:text-cb_secondary transition-colors">
+          {item.name}
+        </a>
       </Link>
     );
   });
 
   return (
-    <header className="navbar w-full fixed top-0 left-0 p-1 z-50 backdrop-blur-sm border-b dark:bg-cb_blue">
-      <div className="w-3/4 m-auto flex justify-between items-center">
+    <header className="sm:block hidden navbar w-full fixed top-0 left-0 p-1 z-50 backdrop-blur-sm border-b border-cb_black dark:border-cb_white">
+      <div className="md:w-3/4 w-full m-auto flex justify-between items-center">
         <div>
           <Link href="/">
             <a>
@@ -57,7 +59,7 @@ const Navbar = () => {
         <nav className="flex gap-x-4 font-serif font-bold uppercase">
           {NavItems}
         </nav>
-        <div className="flex gap-x-4">
+        <div className="flex gap-x-4 items-center">
           <NavUser />
           <NightmodeSwitcher />
         </div>

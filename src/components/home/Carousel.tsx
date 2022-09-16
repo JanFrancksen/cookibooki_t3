@@ -55,7 +55,9 @@ const Carousel = () => {
 
   return (
     <div>
-      <h2 className="h1 pl-20 font-bold font-serif">Schon probiert?</h2>
+      <h2 className="mt-40 lg:mt-0 h1 pl-20 font-bold font-serif">
+        Schon probiert?
+      </h2>
       <h3 className="pl-20 text-lg">unsere neuen Köstlichkeiten</h3>
       <div className="relative my-8">
         {scrollX !== 0 && (

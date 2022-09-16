@@ -1,6 +1,6 @@
 import React from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { FaSignOutAlt } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
 import Link from "next/link";
 
 const LoginButton = () => {
@@ -14,13 +14,15 @@ const LoginButton = () => {
       {session ? (
         <div>
           <Link href="/profile">
-            <a className="mr-4 ">{session.user?.name}</a>
+            <a className="mr-4 rounded-full p-2 hover:bg-cb_primary hover:text-cb_white dark:hover:bg-cb_secondary transition-colors">
+              {session.user?.name}
+            </a>
           </Link>
           <button
-            className="font-bold font-serif uppercase"
             onClick={() => signOut()}
+            className="hover:bg-cb_primary hover:text-cb_white dark:hover:bg-cb_secondary rounded-full p-2 transition-colors"
           >
-            <FaSignOutAlt />
+            <MdLogout />
           </button>
         </div>
       ) : (

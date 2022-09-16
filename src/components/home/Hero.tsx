@@ -32,7 +32,7 @@ const Hero = () => {
   }
 
   return (
-    <div className="w-full m-auto h-[70vh] relative flex items-center justify-center">
+    <div className="lg:flex hidden w-full m-auto h-[70vh] relative  items-center justify-center">
       <div className="w-96 flex flex-col gap-y-8 items-start z-10 p-8 absolute left-8 top-1/2 -translate-y-1/2">
         <h1 className="header2 text-cb_green">Rezept des Tages</h1>
         <h2 className="header1 dark:text-cb_white text-5xl drop-shadow-md font-bold font-serif">

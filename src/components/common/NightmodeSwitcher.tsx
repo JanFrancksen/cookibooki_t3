@@ -7,15 +7,12 @@ export default function NightmodeSwitcher() {
 
   return (
     <button
+      className="p-2 rounded-full text-cb_secondary dark:text-cb_primary hover:bg-cb_secondary hover:text-cb_white transition-colors dark:hover:bg-cb_primary dark:hover:text-cb_white"
       onClick={() => {
         setTheme(theme === "dark" ? "light" : "dark");
       }}
     >
-      {theme === "dark" ? (
-        <BsFillSunFill className="text-yellow-500" />
-      ) : (
-        <BsMoonStarsFill className="text-gray-500" />
-      )}
+      {theme === "dark" ? <BsFillSunFill /> : <BsMoonStarsFill />}
     </button>
   );
 }
