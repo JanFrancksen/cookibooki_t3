@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Loader from "../components/common/Loader";
 import Carousel from "../components/home/Carousel";
 import Hero from "../components/home/Hero";
 import Inspiration from "../components/home/Inspiration";

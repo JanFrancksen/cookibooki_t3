@@ -7,19 +7,19 @@ html {
 }
 
 @layer components {
-  .navitem {
-    @apply text-cb_green hover:text-cb_white;
+  .loader {
+    @apply bg-cb_primary inline-block w-4 h-4 rounded-full mx-2 animate-bounce;
   }
 
-  .header1 {
-    @apply text-4xl font-black  text-cb_green;
+  .header {
+    @apply font-bold font-serif;
   }
 
-  .header2 {
-    @apply text-cb_white font-bold;
+  .h1 {
+    @apply text-5xl uppercase;
   }
 
-  .btn {
-    @apply text-cb_green border-cb_green border-2 px-4 py-2 rounded-full shadow-md hover:bg-cb_green hover:text-cb_darkblue transition-colors;
+  .h2 {
+    @apply text-2xl uppercase;
   }
 }

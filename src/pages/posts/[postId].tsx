@@ -1,5 +1,6 @@
 import Error from "next/error";
 import { useRouter } from "next/router";
+import Loader from "../../components/common/Loader";
 import { trpc } from "../../utils/trpc";
 
 function SinglePostPage() {
@@ -8,7 +9,11 @@ function SinglePostPage() {
   const { data, isLoading } = trpc.useQuery(["blog.getSinglePost", { postId }]);
 
   if (isLoading) {
-    return <p className="my-80">Loading posts...</p>;
+    return (
+      <p className="my-80">
+        <Loader />
+      </p>
+    );
   }
 
   if (!data) {
