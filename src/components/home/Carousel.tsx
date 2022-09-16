@@ -54,11 +54,11 @@ const Carousel = () => {
   }
 
   return (
-    <div>
-      <h2 className="mt-40 lg:mt-0 h1 pl-20 font-bold font-serif">
+    <div className="md:pl-0 pl-8 pt-8">
+      <h2 className="md:mt-40 lg:mt-0 h1 md:pl-20 font-bold font-serif">
         Schon probiert?
       </h2>
-      <h3 className="pl-20 text-lg">unsere neuen Köstlichkeiten</h3>
+      <h3 className="md:pl-20 text-lg">unsere neuen Köstlichkeiten</h3>
       <div className="relative my-8">
         {scrollX !== 0 && (
           <>
@@ -72,7 +72,7 @@ const Carousel = () => {
           </>
         )}
         <div
-          className="flex flex-nowrap gap-x-8 pl-20 overflow-x-auto relative scroll-smooth"
+          className="flex flex-nowrap gap-x-8 md:pl-20 overflow-x-auto relative scroll-smooth"
           ref={scrl}
           onScroll={scrollCheck}
         >

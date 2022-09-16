@@ -4,7 +4,7 @@ import food from "../../../public/images/food.jpg";
 
 const Inspiration = () => {
   return (
-    <div className="w-3/4 m-auto my-20">
+    <div className="md:w-3/4 md:p-0 p-8 m-auto md:my-20">
       <h2 className="h1 font-bold font-serif my-8">Inspiration gefällig?</h2>
       <div className="grid md:grid-cols-3 gap-x-8">
         <div className="relative h-fit">
