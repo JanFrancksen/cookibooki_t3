@@ -5,8 +5,8 @@ import food from "../../../public/images/food.jpg";
 const Inspiration = () => {
   return (
     <div className="md:w-3/4 md:p-0 p-8 m-auto md:my-20">
-      <h2 className="h1 font-bold font-serif my-8">Inspiration gefällig?</h2>
-      <div className="grid md:grid-cols-3 gap-x-8">
+      <h2 className="h1 font-bold font-serif mb-8">Inspiration gefällig?</h2>
+      <div className="grid md:grid-cols-3 gap-8">
         <div className="relative h-fit">
           <span className="z-10 absolute inset-0 bg-gradient-to-t from-cb_black opacity-70"></span>
           <Image
