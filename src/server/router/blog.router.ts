@@ -9,8 +9,8 @@ export const blogRouter = createRouter()
   .mutation("create-post", {
     input: createPostSchema,
     async resolve({ ctx, input }) {
-      if (!ctx.session) {
-        new trpc.TRPCError({
+      if (!ctx.session?.user) {
+        return new trpc.TRPCError({
           code: "FORBIDDEN",
           message: "Can not create a post while logged out",
         });
@@ -18,7 +18,7 @@ export const blogRouter = createRouter()
       const post = await ctx.prisma.post.create({
         data: {
           ...input,
-          user: {
+          author: {
             connect: {
               id: ctx.session?.user?.id,
             },
