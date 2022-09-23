@@ -26,6 +26,10 @@ const RecipeItem = ({
               objectFit="cover"
             />
             <div className="p-8 flex gap-2 flex-col items-center">
+              <div className="">
+                <span>{difficulty}</span>
+                <span>{time}</span>
+              </div>
               <h3 className="h2 font-bold font-serif">{title}</h3>
               <p>{description}</p>
               <div className="flex gap-2">
