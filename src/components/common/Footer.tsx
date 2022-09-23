@@ -22,7 +22,7 @@ const Footer = () => {
         </div>
         <div>
           <h3 className="text-xl font-bold">Test</h3>
-          Test
+          Test123
         </div>
       </div>
     </div>
