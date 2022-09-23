@@ -9,7 +9,7 @@ import Loader from "../../components/common/Loader";
 import { trpc } from "../../utils/trpc";
 
 const Hero = () => {
-  const recipeId = "cl8a3111o0015mriqmyxj1l8i";
+  const recipeId = "cl8blt8ul00898tiqgjc5t4n6";
 
   const { data: session } = useSession();
   const userId = session?.user?.id as string;
