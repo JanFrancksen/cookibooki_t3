@@ -10,7 +10,7 @@ export const blogRouter = createRouter()
     input: createPostSchema,
     async resolve({ ctx, input }) {
       if (!ctx.session?.user) {
-        return new trpc.TRPCError({
+        new trpc.TRPCError({
           code: "FORBIDDEN",
           message: "Can not create a post while logged out",
         });
