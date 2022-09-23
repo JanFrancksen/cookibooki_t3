@@ -49,15 +49,15 @@ const Navbar = () => {
     },
     {
       id: 5,
-      name: "Profil",
-      link: "/blog",
-      icon: <FaUser />,
+      name: "Kochbuch",
+      link: "/cookbook",
+      icon: <FaHeart />,
     },
     {
       id: 6,
-      name: "Kochbuch",
+      name: "Profil",
       link: "/blog",
-      icon: <FaHeart />,
+      icon: <FaUser />,
     },
   ];
 
