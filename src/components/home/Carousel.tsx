@@ -45,7 +45,7 @@ const Carousel = () => {
       key={recipe.id}
       img={recipe.img}
       title={recipe.title}
-      description={recipe.content}
+      description={recipe.description}
     />
   ));
 
