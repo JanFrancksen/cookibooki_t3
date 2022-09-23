@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -8,23 +9,26 @@ import Loader from "../../components/common/Loader";
 import { trpc } from "../../utils/trpc";
 
 const Hero = () => {
-  const recipeId = "cl84sqscr0209ggiqlcy6b16q";
+  const recipeId = "cl8a3111o0015mriqmyxj1l8i";
+
+  const { data: session } = useSession();
+  const userId = session?.user?.id as string;
   const { data, isLoading } = trpc.useQuery([
     "recipe.getSingleRecipe",
     { recipeId },
   ]);
 
-  const [like, setlike] = useState(87);
-  const [likeactive, setlikeactive] = useState(false);
+  const [likeactive, setlikeactive] =
+    useState(false); /*Checkt ob geliked ist oder nicht */
 
   function likePost() {
-    if (likeactive) {
-      setlikeactive(false);
-      setlike(like - 1);
-    } else {
-      setlikeactive(true);
-      setlike(like + 1);
-    }
+    trpc.useQuery(["recipe.increaseLikedRecipe", { userId, recipeId }]);
+    setlikeactive(true);
+  }
+
+  function unlikePost() {
+    trpc.useQuery(["recipe.increaseLikedRecipe", { userId, recipeId }]);
+    setlikeactive(false);
   }
 
   if (isLoading) {
@@ -45,7 +49,7 @@ const Hero = () => {
           {likeactive ? (
             <button
               className="flex gap-x-2 items-center justify-center text-xl text-cb_white"
-              onClick={likePost}
+              onClick={unlikePost}
             >
               <FaHeart className="text-red-500" /> {data?.likes}
             </button>

@@ -6,7 +6,14 @@ import Logo from "../../../public/images/cb_logo.png";
 import Logo_B from "../../../public/images/cb_logo_b.png";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { FaUtensils, FaComment, FaHandshake } from "react-icons/fa";
+import {
+  FaHome,
+  FaUtensils,
+  FaComment,
+  FaHandshake,
+  FaHeart,
+  FaUser,
+} from "react-icons/fa";
 
 const NightmodeSwitcher = dynamic(() => import("./NightmodeSwitcher"), {
   ssr: false,
@@ -18,25 +25,43 @@ const Navbar = () => {
   const NavitemList = [
     {
       id: 1,
+      name: "Home",
+      link: "/",
+      icon: <FaHome />,
+    },
+    {
+      id: 2,
       name: "Rezepte",
       link: "/rezepte",
       icon: <FaUtensils />,
     },
     {
-      id: 2,
+      id: 3,
       name: "Affiliates",
       link: "/rezepte",
       icon: <FaHandshake />,
     },
     {
-      id: 3,
+      id: 4,
       name: "Blog",
       link: "/blog",
       icon: <FaComment />,
     },
+    {
+      id: 5,
+      name: "Profil",
+      link: "/blog",
+      icon: <FaUser />,
+    },
+    {
+      id: 6,
+      name: "Kochbuch",
+      link: "/blog",
+      icon: <FaHeart />,
+    },
   ];
 
-  const NavItems = NavitemList.map((item) => {
+  const NavItems = NavitemList.slice(1, 4).map((item) => {
     return (
       <Link key={item.id} href={item.link}>
         <a className="hover:text-cb_primary dark:hover:text-cb_secondary transition-colors">

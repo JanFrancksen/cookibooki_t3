@@ -25,7 +25,7 @@ function SinglePostPage() {
   return (
     <div className="my-80">
       <h1>{data?.title}</h1>
-      <p>{data?.content}</p>
+      <p>{data?.description}</p>
     </div>
   );
 }

@@ -1,5 +1,9 @@
 import { createRouter } from "./context";
-import { getSingleRecipeSchema } from "../../schema/recipe.schema";
+import {
+  getSingleRecipeSchema,
+  getFilteredRecipesSchema,
+  likeRecipeSchema,
+} from "../../schema/recipe.schema";
 
 export const recipeRouter = createRouter()
   .query("getNewRecipes", {
@@ -25,5 +29,61 @@ export const recipeRouter = createRouter()
           id: input.recipeId,
         },
       });
+    },
+  })
+  .query("getFilteredRecipes", {
+    input: getFilteredRecipesSchema,
+    resolve({ input, ctx }) {
+      return ctx.prisma.recipe.findMany({
+        where: {
+          AND: [
+            {
+              title: {
+                contains:
+                  input.searchTerm === "" ? undefined : input.searchTerm,
+              },
+            },
+            {
+              tag: {
+                some: {
+                  name: {
+                    in: input.tag?.length === 0 ? undefined : input.tag,
+                  },
+                },
+              },
+            },
+          ],
+        },
+        include: {
+          tag: true,
+        },
+      });
+    },
+  })
+  .query("getLikedRecipes", {
+    resolve({ ctx }) {
+      return ctx.prisma.recipe.findMany({
+        where: {
+          likedById: ctx.session?.user?.id,
+        },
+      });
+    },
+  })
+  .query("increaseLikedRecipe", {
+    input: likeRecipeSchema,
+    resolve({ input, ctx }) {
+      return ctx.prisma.recipe.update({
+        where: {
+          id: input.recipeId,
+        },
+        data: {
+          likedById: ctx.session?.user?.id,
+        },
+      });
+    },
+  })
+  .query("getAllCategories", {
+    resolve({ ctx }) {
+      return ctx.prisma.tag.findMany();
     },
   });

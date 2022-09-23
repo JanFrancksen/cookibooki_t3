@@ -1,23 +1,25 @@
-import React, { useRef, useState } from "react";
-import recipes from "../data/recipes.json";
-import RecipeItem from "../components/recipes/RecipeItem";
-import Loader from "../components/common/Loader";
+import { useState } from "react";
 import { trpc } from "../utils/trpc";
+import SearchContent from "../components/recipes/SearchContent";
 
 const Rezepte = () => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState<string>();
+  const [tag, setTag] = useState<string[]>([]);
 
-  const { data, isLoading } = trpc.useQuery(["recipe.getAllRecipes"]);
+  const { data } = trpc.useQuery(["recipe.getAllCategories"]);
 
-  if (isLoading) {
-    return <Loader />;
+  console.log("x " + tag);
+
+  function resetFilters() {
+    setTag([]);
   }
-
   return (
-    <div>
+    <div className="flex flex-col">
       <div className="relative w-full h-72 flex flex-col gap-8 items-center justify-center py-72 bg-rezepteHero bg-cover bg-no-repeat bg-fixed before:inset-0 before:absolute before:bg-black before:bg-gradient-to-t before:opacity-60">
-        <h1 className="header1 z-10">Finde dein neues Lieblingsrezept!</h1>
-        <div className="z-10">
+        <h1 className="h1 text-white text-center font-bold font-serif z-10">
+          Finde dein neues Lieblingsrezept!
+        </h1>
+        <div className="z-10 flex flex-col items-center gap-y-4">
           <input
             type="text"
             onChange={(event) => {
@@ -26,49 +28,32 @@ const Rezepte = () => {
             placeholder="Search.."
             className="py-2 px-4 rounded-full mr-4"
           />
-          <button className="bg-cb_green py-2 px-4 rounded-full">suchen</button>
-        </div>
-        <div className="flex flex-row gap-2 items-center z-10">
-          <button className="bg-cb_green px-2 py-1 rounded-full text-xs">
-            + vegan
-          </button>
-          <button className="bg-cb_green px-2 py-1 rounded-full text-xs">
-            + vegetarisch
-          </button>
-          <button className="bg-cb_green px-2 py-1 rounded-full text-xs">
-            + glutenfrei
-          </button>
-          <button className="bg-cb_green px-2 py-1 rounded-full text-xs">
-            + laktosefrei
-          </button>
-          <button className="bg-cb_green px-2 py-1 rounded-full text-xs">
-            + fructosefrei
-          </button>
-          <button className="bg-cb_green px-2 py-1 rounded-full text-xs">
-            + mit Fleisch
-          </button>
-          <button className="bg-cb_green px-2 py-1 rounded-full text-xs">
-            + mit Nudeln
-          </button>
+          <div className="flex gap-2 w-80 flex-wrap justify-center">
+            {data?.map((tags) => {
+              return (
+                <button
+                  key={tags.id}
+                  onClick={() => setTag([...tag, tags.name])}
+                  className="bg-cb_white text-cb_primary rounded-full px-3 py-1 text-xs"
+                >
+                  {tags.name}
+                </button>
+              );
+            })}
+          </div>
+          {tag.length !== 0 ? (
+            <button
+              onClick={resetFilters}
+              className="underline text-cb_white text-xs"
+            >
+              Filter zurücksetzen
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       </div>
-
-      <div
-        className="grid grid-cols-3 w-3/4 m-auto gap-8 -mt-16 mb-16 z-20"
-        id="recipeContainer"
-      >
-        {data?.map((recipe) => {
-          return (
-            <RecipeItem
-              key={recipe.id}
-              image={recipe.img}
-              title={recipe.title}
-              description={recipe.content}
-              link={recipe.id}
-            />
-          );
-        })}
-      </div>
+      <SearchContent searchTerm={searchTerm} tag={tag} />
     </div>
   );
 };

@@ -6,11 +6,11 @@ import {
 } from "../../schema/post.schema";
 
 export const blogRouter = createRouter()
-  /* .mutation("create-post", {
+  .mutation("create-post", {
     input: createPostSchema,
-    async resolve({ctx, input}) {
-      if (!ctx.user) {
-        return new trpc.TRPCError({
+    async resolve({ ctx, input }) {
+      if (!ctx.session) {
+        new trpc.TRPCError({
           code: "FORBIDDEN",
           message: "Can not create a post while logged out",
         });
@@ -20,14 +20,14 @@ export const blogRouter = createRouter()
           ...input,
           user: {
             connect: {
-              id: ctx.user.id,
+              id: ctx.session?.user?.id,
             },
           },
         },
       });
       return post;
     },
-  })*/
+  })
   .query("getAllPosts", {
     resolve({ ctx }) {
       return ctx.prisma.post.findMany();
