@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { CreateRecipeInput } from "../../schema/recipe.schema";
+import { CreateRecipeInput } from "../../schema/user.schema";
 import { trpc } from "../../utils/trpc";
 
 function CreateRecipePage() {
@@ -32,9 +32,12 @@ function CreateRecipePage() {
       <br />
       <input
         type="text"
-        placeholder="your post title"
-        {...register("content")}
+        placeholder="your post description"
+        {...register("description")}
       />
+      <br />
+      <input type="text" placeholder="your post image" {...register("img")} />
+
       <br />
       <button>Create Post</button>
     </form>
