@@ -1,14 +1,12 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CarouselElement from "./CarouselElement";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
-
-import Loader from "../../components/common/Loader";
 import { trpc } from "../../utils/trpc";
 
 const Carousel = () => {
   const { data, isLoading } = trpc.useQuery(["recipe.getNewRecipes"]);
 
-  const scrl = useRef<any>(null);
+  const scrl = useRef<any | null>(null);
   const [scrollX, setscrollX] = useState(0); // For detecting start scroll postion
   const [scrolEnd, setscrolEnd] = useState(false); // For detecting end of scrolling
 
@@ -50,8 +48,8 @@ const Carousel = () => {
     />
   ));
 
-  const loadBlocks = [...Array(4)].map((e, i) => (
-    <div className="basis-72 shrink-0 grow-0">
+  const loadBlocks = [...Array(4)].map((i) => (
+    <div key={i} className="basis-72 shrink-0 grow-0">
       <div className="bg-gray-400 animate-pulse aspect-square"></div>
       <div className="flex flex-col items-center">
         <div className="h-4 bg-gray-400 animate-pulse m-4 w-40 rounded-full"></div>
