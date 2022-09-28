@@ -8,7 +8,7 @@ function CreateRecipePage() {
 
   const router = useRouter();
 
-  const { mutate, error } = trpc.useMutation(["profile.create-recipe"], {
+  const { mutate, error } = trpc.useMutation(["user.create-recipe"], {
     onSuccess: ({ id }) => {
       router.push(`/rezepte/${id}`);
     },

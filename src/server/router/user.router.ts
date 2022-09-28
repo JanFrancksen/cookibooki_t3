@@ -1,10 +1,6 @@
 import { createRouter } from "./context";
 import * as trpc from "@trpc/server";
-import {
-  createPostSchema,
-  createRecipeSchema,
-  getUserInfoSchema,
-} from "../../schema/user.schema";
+import { createPostSchema, createRecipeSchema } from "../../schema/user.schema";
 
 export const userRouter = createRouter()
   .mutation("create-post", {
@@ -28,7 +24,7 @@ export const userRouter = createRouter()
       });
       return post;
     },
-  }) /*
+  })
   .mutation("create-recipe", {
     input: createRecipeSchema,
     async resolve({ ctx, input }) {
@@ -50,7 +46,7 @@ export const userRouter = createRouter()
       });
       return recipe;
     },
-  })*/
+  })
   .query("getUserInfo", {
     resolve({ ctx }) {
       return ctx.prisma.user.findUnique({
