@@ -30,6 +30,8 @@ const SearchContent = ({ searchTerm, tag }: any) => {
             description={recipe.description}
             link={recipe.id}
             tag={recipe.tag}
+            difficulty={recipe.difficulty}
+            time={recipe.timeNeeded}
           />
         );
       })}

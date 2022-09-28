@@ -5,8 +5,8 @@ interface RecipeData {
   image: string;
   title: string;
   description: string;
-  difficulty: string;
-  time: number;
+  difficulty: string | null;
+  time: number | null;
   link: string;
   tag: any;
 }
