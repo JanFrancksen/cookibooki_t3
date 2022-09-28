@@ -9,7 +9,11 @@ const SearchContent = ({ searchTerm, tag }: any) => {
   ]);
 
   if (isLoading) {
-    return <div className=""></div>;
+    return (
+      <div className="">
+        <div></div>
+      </div>
+    );
   }
 
   return (

@@ -28,6 +28,14 @@ export const recipeRouter = createRouter()
         where: {
           id: input.recipeId,
         },
+        include: {
+          tag: true,
+          content: {
+            orderBy: {
+              id: "asc",
+            },
+          },
+        },
       });
     },
   })

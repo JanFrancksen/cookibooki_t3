@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import { map } from "zod";
+
+interface RecipeData {
+  image: string;
+  title: string;
+  description: string;
+  difficulty: string;
+  time: number;
+  link: string;
+  tag: string[];
+}
 
 const RecipeItem = ({
   image,
@@ -11,12 +19,12 @@ const RecipeItem = ({
   time,
   link,
   tag,
-}: any) => {
+}: RecipeData) => {
   console.log(tag);
   return (
     <Link href={`rezepte/${link}`}>
       <a>
-        <div className="bg-cb_green text-cb_white flex flex-col text-center border shadow-md hover:shadow-lg transition-shadow">
+        <div className="flex flex-col text-center border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
           <div className="w-full">
             <Image
               src={image}

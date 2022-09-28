@@ -27,4 +27,13 @@ html {
     @apply grid gap-4 w-3/4 mx-auto my-40;
     grid-template-areas: "1 1 1" "2 2 3" "4 4 4";
   }
+
+  .counterBody {
+    counter-reset: headline;
+  }
+
+  .counter::before {
+    counter-increment: headline;
+    content: "Schritt " counter(headline) ": ";
+  }
 }

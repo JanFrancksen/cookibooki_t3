@@ -31,16 +31,12 @@ const Hero = () => {
     setlikeactive(false);
   }
 
-  if (isLoading) {
-    return <Loader />;
-  }
-
   return (
     <div className="lg:flex hidden w-full m-auto h-[70vh] relative  items-center justify-center">
       <div className="w-96 flex flex-col gap-y-8 items-start z-10 p-8 absolute left-8 top-1/2 -translate-y-1/2">
         <h1 className="header2 text-cb_green">Rezept des Tages</h1>
         <h2 className="header1 dark:text-cb_white text-5xl drop-shadow-md font-bold font-serif">
-          {data?.title}
+          {isLoading ? "Lädt..." : data?.title}
         </h2>
         <div className="flex gap-x-4">
           <Link href={`/rezepte/${recipeId}`} className="btn">
@@ -51,14 +47,14 @@ const Hero = () => {
               className="flex gap-x-2 items-center justify-center text-xl text-cb_white"
               onClick={unlikePost}
             >
-              <FaHeart className="text-red-500" /> {data?.likes}
+              <FaHeart className="text-red-500" /> {isLoading ? 0 : data?.likes}
             </button>
           ) : (
             <button
               className="flex gap-x-2 items-center justify-center text-xl text-cb_white"
               onClick={likePost}
             >
-              <FaRegHeart /> {data?.likes}
+              <FaRegHeart /> {isLoading ? 0 : data?.likes}
             </button>
           )}
         </div>

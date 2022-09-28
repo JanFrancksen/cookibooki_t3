@@ -46,12 +46,19 @@ const Carousel = () => {
       img={recipe.img}
       title={recipe.title}
       description={recipe.description}
+      link={`rezepte/${recipe.id}`}
     />
   ));
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  const loadBlocks = [...Array(4)].map((e, i) => (
+    <div className="basis-72 shrink-0 grow-0">
+      <div className="bg-gray-400 animate-pulse aspect-square"></div>
+      <div className="flex flex-col items-center">
+        <div className="h-4 bg-gray-400 animate-pulse m-4 w-40 rounded-full"></div>
+        <div className="bg-gray-400 animate-pulse rounded-full h-4 w-20"></div>
+      </div>
+    </div>
+  ));
 
   return (
     <div className="md:pl-0 pl-8 pt-8">
@@ -72,11 +79,11 @@ const Carousel = () => {
           </>
         )}
         <div
-          className="flex flex-nowrap gap-x-8 md:pl-20 overflow-x-auto relative scroll-smooth"
+          className="flex flex-nowrap gap-x-8 md:pl-20 overflow-x-auto overflow-y-visible relative scroll-smooth"
           ref={scrl}
           onScroll={scrollCheck}
         >
-          {recipeList}
+          {isLoading ? loadBlocks : recipeList}
         </div>
         {!scrolEnd && (
           <>

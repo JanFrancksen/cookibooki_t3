@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import React from "react";
 import NavUser from "./NavUser";
 import Logo from "../../../public/images/cb_logo.png";
 import Logo_B from "../../../public/images/cb_logo_b.png";
@@ -38,7 +37,7 @@ const Navbar = () => {
     {
       id: 3,
       name: "Affiliates",
-      link: "/rezepte",
+      link: "/affiliates",
       icon: <FaHandshake />,
     },
     {

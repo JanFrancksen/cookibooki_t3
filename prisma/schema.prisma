@@ -98,14 +98,42 @@ model Recipe {
     likedById   String?
     difficulty  Difficulty?
     timeNeeded  Int?
+    ingredients Ingredients[]
 }
 
 model RecipeContent {
     id           Int     @id @default(autoincrement())
     title        String
+    text         String
     image        String?
     partOfRecipe Recipe  @relation(fields: [recipeId], references: [id])
     recipeId     String
+}
+
+model Ingredients {
+    id    String @id @default(cuid())
+    title String
+
+    image         String?
+    recipe        Recipe[]
+    inhaltsstoffe Inhaltsstoff[]
+}
+
+model Inhaltsstoff {
+    id               String      @id @default(cuid())
+    partOfIngredient Ingredients @relation(fields: [ingredientId], references: [id])
+    ingredientId     String
+    menge            Float
+    einheit          String
+    nutrient         Nutrient[]
+}
+
+model Nutrient {
+    id                 String       @id @default(cuid())
+    partOfInhaltsstoff Inhaltsstoff @relation(fields: [inhaltsstoffId], references: [id])
+    inhaltsstoffId     String
+    menge              Float
+    einheit            String
 }
 
 model Tag {
