@@ -8,7 +8,7 @@ interface RecipeData {
   difficulty: string;
   time: number;
   link: string;
-  tag: string[];
+  tag: any;
 }
 
 const RecipeItem = ({
